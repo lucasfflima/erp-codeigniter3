@@ -24,7 +24,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/erp-codeigniter3/';
+// Configuração automática da base_url
+if (isset($_SERVER['HTTP_HOST'])) {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
+    $host = $_SERVER['HTTP_HOST'];
+    $path = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+    $config['base_url'] = $protocol . $host . $path;
+} else {
+    $config['base_url'] = '';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +45,16 @@ $config['base_url'] = 'http://localhost/erp-codeigniter3/';
 |
 */
 $config['index_page'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Webhook Configuration
+|--------------------------------------------------------------------------
+|
+| Token de segurança para validação de webhooks
+|
+*/
+$config['webhook_token'] = 'webhook_erp_ci3_2025_' . md5('token_secreto_muito_seguro');
 
 /*
 |--------------------------------------------------------------------------
@@ -226,7 +244,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = 4;
 
 /*
 |--------------------------------------------------------------------------
