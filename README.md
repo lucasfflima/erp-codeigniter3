@@ -117,11 +117,6 @@ php -S localhost:8000 -t ./
 
 **Acesso ao Sistema:**
 - 🌐 **Principal:** http://localhost:8000 (redireciona para Google OAuth)  
-- 🎯 **Direto:** http://localhost:8000/dashboard (acesso sem OAuth para teste)  
-
-## 🧪 Teste de Email
-
-Para testar emails: `http://localhost:8000/dashboard/teste_email`
 
 ## 🧪 Testes Automatizados
 
